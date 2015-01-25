@@ -10,7 +10,7 @@
   raw: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   register: homebrew_result
   # changed_when: "homebrew_result != 1"
-  failed_when: "homebrew_result.rc != 0 and 'Homebrew is already installed' not in homebrew_result.stderr"
+  failed_when: "homebrew_result.rc != 0 and 'Homebrew is already installed' not in homebrew_result.stdout"
 # Successful installs return 0. Running when already installed returns 1 and writes
 # to stderr, but we wish to consider this specific error a success.
 
