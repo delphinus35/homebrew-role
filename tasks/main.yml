@@ -7,10 +7,10 @@
 # Homebrew - OSX package manager
 # brew --version ~ 0.9.5
 - name: Install Homebrew via official ruby installer script
-  shell: yes 'y' | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  shell: echo 'y' | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   register: homebrew_result
   # changed_when: "homebrew_result != 1"
-  failed_when: "homebrew_result.rc != 0 and 'Homebrew is already installed' not in homebrew_result.stdout"
+  failed_when: "homebrew_result.rc != 0 and 'Homebrew is already installed' not in homebrew_result.stderr"
 # Successful installs return 0. Running when already installed returns 1 and writes
 # to stderr, but we wish to consider this specific error a success.
 
